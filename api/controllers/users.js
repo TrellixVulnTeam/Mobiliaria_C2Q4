@@ -25,6 +25,7 @@ const signupUser = async (req, res) => {
 			const dataUser = {
 				name: user.name,
 				email: user.email,
+				rol: user.rol,
 				accessToken: accessToken,
 				expiresIn: expiresIn
 			};
@@ -73,7 +74,7 @@ const loginUser = async (req, res, next) => {
 	} else if (!userBD.comparePassword(req.body.password)) {
 		res.status(404).json({ msg: 'Password incorrect' });
 	} else {
-		const expiresIn = 24 * 60 * 60;
+		const expiresIn = 1;
 		const accessToken = jwt.sign({ id: userBD.id, name: `${userBD.name} ${userBD.lastname}` }, SECRET_KEY, {
 			expiresIn: expiresIn
 		});
@@ -81,6 +82,7 @@ const loginUser = async (req, res, next) => {
 		const dataUser = {
 			name: userBD.name,
 			email: userBD.email,
+			rol: userBD.rol,
 			accessToken: accessToken,
 			expiresIn: expiresIn
 		};
@@ -89,6 +91,10 @@ const loginUser = async (req, res, next) => {
 	}
 };
 
+const validateUSer = (req, res, next)=>{
+	const token = req.headers['ACCESS_TOKEN'];
+	jwt.verify(token, SECRET_KEY, (err, decoded)=>{})	
+}
 module.exports = {
 	signupUser,
 	loginUser
