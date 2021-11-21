@@ -91,11 +91,19 @@ const loginUser = async (req, res, next) => {
 	}
 };
 
-const validateUSer = (req, res, next)=>{
-	const token = req.headers['ACCESS_TOKEN'];
-	jwt.verify(token, SECRET_KEY, (err, decoded)=>{})	
+const validateUser = (req, res, next)=>{
+	const token = req.headers.autorization;
+	jwt.verify(token, SECRET_KEY, (err, decoded)=>{
+		if (err){
+			res.status(500).send({agree: false})
+		}else{
+			console.log(decoded);
+			res.status(200).send({agree: true});
+		}
+	})	
 }
 module.exports = {
 	signupUser,
-	loginUser
+	loginUser,
+	validateUser
 };
