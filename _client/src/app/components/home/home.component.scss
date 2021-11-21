@@ -1,0 +1,87 @@
+@import "../../globals.scss";
+
+.Container {
+  position: relative;
+  & .Banner {
+    z-index: -1;
+    // border-top: 1px solid #0003;
+    background: url("./img/search-banner.png");
+    background-size: 40%;
+    // filter: brightness(90%) contrast(100%) invert(1.5);
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .Search{
+    position: absolute;
+    top:5%;right: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;height:40vh;
+    & h2 {
+      filter: none;
+      font-size: 2rem;
+      color: $font-n;
+    }
+    & form{
+      display: flex;
+      justify-content: space-around;
+      height: 60%;
+      width: 80%;
+      & > input{
+        width: 80%;
+        border:none;
+        border-radius: .3rem;
+        border-bottom: .25rem solid $blue;
+        &:focus{
+          outline: none;
+        }
+        &::placeholder{
+          padding-left: .25rem;
+        }
+      }
+      & button{
+        width: 15%;
+        border: none;
+        border-radius: .3rem;
+        background: $blue;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        &:focus{
+          outline: none;
+        }
+        &:hover{
+          background-color: $blue-d;
+        }
+      }
+      & >*{
+        height: 30%;
+      }
+    }
+  }
+
+  & .Content{
+    z-index: 2!important;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    box-shadow: $b-shadow;
+    padding-top: 2rem;
+    height: 100vh;
+
+    & div .Banda{
+      color: $white;
+      background: $deg-blue-d;
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

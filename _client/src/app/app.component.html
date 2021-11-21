@@ -1,0 +1,13 @@
+<nav>
+  <div class="logo">
+    <a routerLink="/" ><p><b>ARCH</b>ITECTS</p></a>
+  </div>
+  <ul>
+    <li *ngFor="let link of list"><a [routerLink]="link.url" routerLinkActive="Active" ><i [class]="link.icon" ></i>{{link.name}}</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
+<footer>
+  <p><b>Architect{{' '}}</b>Todos los derechos reservados &#169;</p>
+</footer>
+

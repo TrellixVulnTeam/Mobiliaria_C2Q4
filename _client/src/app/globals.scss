@@ -1,0 +1,27 @@
+$font-n: #201d46;
+$b-shadow: 0 0 1.5rem #0005;
+$b-shadow-t: .2rem .1rem .5rem #0003;
+
+
+//Degradados
+$deg-blue-d:linear-gradient(to right, #0f0c29, #302b63, #24243e);
+
+//color
+$white: #fff;
+$blue: #302b63;
+$blue-o: #302b6355;
+$blue-d: #24243e;
+$gray: rgb(69, 67, 100);
+$font-gray: #333;
+
+
+.button {
+    background: $blue;
+    border: none;
+    color: $white;
+    border-radius: .15rem;
+    &:hover{
+        background:$blue-d ;
+    }
+}
+
