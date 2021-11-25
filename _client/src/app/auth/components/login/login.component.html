@@ -10,12 +10,12 @@
           <input formControlName='password' name="password" type="password" placeholder="ingrese su contraseña" />
         </label>
         <div style="font-size: .8rem; color: #300; overflow: visible;" class="txt-dgr"  *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched"><p>password is <strong>Required</strong> </p></div>
-        <div class="captcha">
+        <!-- <div class="captcha">
           <ngx-recaptcha2 #captchaElem
           [siteKey]="siteKey"
           formControlName="recaptcha">
         </ngx-recaptcha2>
-        </div>
+        </div> -->
         <button type="submit">Log In</button>
       </form>
     </div>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SecurityRoutingModule } from './security-routing.module';
 import { AccountsComponent } from './components/accounts/accounts.component';
+import { SecurityService } from '../services/security.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -12,6 +14,6 @@ import { AccountsComponent } from './components/accounts/accounts.component';
   imports: [
     CommonModule,
     SecurityRoutingModule
-  ]
+  ], providers:[SecurityService, CookieService]
 })
 export class SecurityModule { }

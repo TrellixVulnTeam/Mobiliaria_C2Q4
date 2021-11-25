@@ -13,7 +13,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.logout()
-    location.reload()
+    this.router.navigate(['/'])
   }
 
 }

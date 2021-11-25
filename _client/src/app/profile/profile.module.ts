@@ -5,6 +5,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { UserService } from '../services/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { UserService } from '../services/user.service';
   imports: [
     CommonModule,
     ProfileRoutingModule
-  ],providers: [UserService]
+  ],providers: [CookieService, UserService]
 
 })
 export class ProfileModule { }

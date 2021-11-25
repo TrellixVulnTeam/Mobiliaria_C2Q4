@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit {
       number: ['', Validators.required, Validators.email],
       email: ['', Validators.required],
       password: ['', Validators.required, Validators.pattern('(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$')],
-      recaptcha: ['', Validators.required]
     })
   }
 
@@ -41,7 +40,6 @@ export class SignupComponent implements OnInit {
       number: this.signupForm.get('number')?.value,
       email: this.signupForm.get('email')?.value,
       password: this.signupForm.get('password')?.value,
-      recaptcha: ""
     }
     console.log(USUARIO);
       this._userService.signup(USUARIO).subscribe(data => {

@@ -30,7 +30,7 @@ export class SecurityGuard implements CanActivate, CanActivateChild, CanDeactiva
 		if (token && rol) {
 			switch (rol) {
 				case 'SECURITY':
-          return true;
+          		return true;
 				case 'ADMIN':
 					this.toast.error(`you can't authorization`, 'ACCESS DENEGATED');
 					this.router.navigate([ '/' ]);
@@ -47,11 +47,12 @@ export class SecurityGuard implements CanActivate, CanActivateChild, CanDeactiva
 				default:
 					this.toast.error('you are not authenticated', 'Error');
 					this.router.navigate([ '/auth/', 'login' ]);
+					return true
 					break;
 			}
 		}
 	    this.toast.error('you are not authenticated', 'Error');
-    this.router.navigate([ '/auth/', 'login' ]);
+    	this.router.navigate([ '/auth/', 'login' ]);
 		return false;
 	}
 	canActivateChild(

@@ -20,7 +20,7 @@ export class UserTokenInterceptor implements HttpInterceptor {
     if(token){
       req=request.clone({
         setHeaders: {
-          autorization: token
+          auth: token
         }
       })
     }

@@ -16,7 +16,7 @@ export class AuthguardGuard implements CanActivate, CanActivateChild, CanDeactiv
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const cookie = this.cookieService.check('ACCESS_TOKEN')
-      console.log(cookie)
+      console.log('AuthGuard--------------->',cookie)
       if(cookie){
         this.router.navigate(['/profile', 'board'])
         this.toast.warning("You are autentified", "REDIRECT")

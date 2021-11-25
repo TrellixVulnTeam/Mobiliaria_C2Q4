@@ -7,7 +7,7 @@ import { Usuario, UsuarioLogin, JwtResponseI, UserI, authentificated} from '../m
 
 @Injectable()
 export class UserService {
-  url="http://localhost:4000/"
+  url="http://localhost:4000/auth/"
   authSubject = new BehaviorSubject(false)
   private token: string | null = null;
   constructor(private http: HttpClient, private cookieService: CookieService) { }
@@ -17,7 +17,7 @@ export class UserService {
       (res:JwtResponseI)=>{
         if(res){
           //guardar
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn)
+        this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn)
         this.cookieService.set('USER', res.dataUser.name)
         this.cookieService.set('ROL', res.dataUser.rol)
         }
@@ -30,8 +30,8 @@ export class UserService {
       (res: JwtResponseI)=>{
         //save token
         this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn)
-        this.cookieService.set('USER', res.dataUser.name)
-        this.cookieService.set('ROL', res.dataUser.rol)
+        this.cookieService.set('USER', res.dataUser.name, parseInt(res.dataUser.expiresIn), '/', 'localhost',false,  "None")
+        this.cookieService.set('ROL', res.dataUser.rol, parseInt(res.dataUser.expiresIn), '/', 'localhost',false,  "None")
       }
     ))
   }
@@ -45,7 +45,7 @@ export class UserService {
 
   private saveToken(token: string, expiresIn: string):void{
     console.log(expiresIn)
-      this.cookieService.set('ACCESS_TOKEN', token, parseInt(expiresIn));
+      this.cookieService.set('ACCESS_TOKEN', token, parseInt(expiresIn), '/', 'localhost',false,  "None");
       this.token = token;
   }
 

@@ -31,7 +31,6 @@ export interface UserI {
 	number: number;
 	email: string;
 	password: string;
-	recaptcha: any;
 }
 
 export interface authentificated{

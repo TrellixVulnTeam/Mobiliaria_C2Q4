@@ -11,7 +11,7 @@ const routes: Routes = [
       {path: 'board', component: ProfileComponent},
       {path: 'my-account', component: MyAccountComponent},
       {path: 'logout', component: LogoutComponent},
-      {path: '**', redirectTo: 'board'},
+      {path: '**', redirectTo: 'board', canActivate:[USerGuardGuard]},
     ], 
       canActivate: [USerGuardGuard]
 }

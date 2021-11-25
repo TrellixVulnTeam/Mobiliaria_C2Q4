@@ -15,8 +15,10 @@ export class USerGuardGuard implements CanActivate, CanActivateChild, CanDeactiv
     ){}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const cookie = this.cookieService.check('ACCESS_TOKEN')
+      console.log('user guard: ', this.cookieService.get('ACCESS_TOKEN'))
       if(!cookie){
         this.router.navigate(['/auth', 'login'])
         this.toast.warning("You are not autentified", "NOT AUTHENTIFIED")

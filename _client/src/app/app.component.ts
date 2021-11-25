@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    this.navDinamic(this.cookieService.get("ACCESS_TOKEN"), this.cookieService.get("USER") )
+    this.navDinamic(this.cookieService.get("ACCESS_TOKEN"), this.cookieService.get("USER") , this.cookieService.get("ROL") )
   }
   constructor(private cookieService: CookieService){}
   title = 'Architect';
@@ -20,9 +20,13 @@ export class AppComponent implements OnInit {
     name: 'Signup',
     url: '/auth/signup',
     icon: 'fas fa-user'
+  },{
+    name: 'About',
+    url: '/about',
+    icon: 'fas fa-user'
   },
 ]
-  navDinamic(token:string, name: string){
+  navDinamic(token:string, name: string, rol:string){
     if(token){
       this.list = [{
         name: `hello, ${name}`,
@@ -31,6 +35,10 @@ export class AppComponent implements OnInit {
       },{
         name: 'Profile',
         url: '/profile/my-account',
+        icon: 'fas fa-user'
+      },{
+        name: `${rol[0].toUpperCase()+rol.slice(1).toLowerCase()}`,
+        url: `/${rol.toLowerCase()}`,
         icon: 'fas fa-user'
       },{
         name: 'Logout',

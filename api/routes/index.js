@@ -1,11 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const {signupUser, loginUser, validateUser} = require('../controllers/users');
+const auth_ = require('./auth/index');
+const security_ = require('./security/index');
+const assesor_ = require('./assesor/index')
+const getInm = require('../controllers/home')
 
-router.post('/signup', signupUser)
-router.post('/login', loginUser)
-router.get('/agree', validateUser)
+function routerApi(app) {
+	app.get('/', getInm)
+	app.use('/auth', auth_);
+	app.use('/security', security_);
+	app.use('/inmuebles', assesor_)
+}
 
-
-
-module.exports = router;
+module.exports = routerApi;

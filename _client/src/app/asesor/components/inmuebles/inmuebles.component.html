@@ -1,1 +1,25 @@
-<p>inmuebles works!</p>
+<div class="Container">
+    <div class="Chart">
+        <div class="Section Owns">
+            <h2 class="Banda">Tus Publicaciones</h2>
+            <div class="Views" *ngIf="inmuebles.length>0 || inmuebles">
+                <div class="Inmueble" *ngFor="let i of inmuebles">
+                    <div class="img" style="background: url('{{i.img.img1}}');background-position:center; background-size: cover"></div>
+                    <div class="desc">
+                      <h3>{{i.type}}</h3>
+                      <p>{{i.sector}}</p>
+                      <p><b>{{i.city}}</b></p>
+                      <div class="icons">
+                       <p><i class="fas fa-layer-group"></i>{{i.attr.levels}}</p>
+                       <p><i class="fas fa-door-closed"></i>{{i.attr.rooms}}</p>
+                       <p><i class="fas fa-bath"></i>{{i.attr.baths}}</p>
+                       <p><i class="fas fa-car"></i>{{i.attr.garage}}</p>
+                      </div>
+                      <p class="price">$ {{i.price}}</p>
+                    </div>
+                  </div>
+                  <div *ngIf="inmuebles.length===0">no tienes publicaciones</div>
+            </div>
+        </div>
+    </div>
+</div>

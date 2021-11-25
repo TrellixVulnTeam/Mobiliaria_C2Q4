@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
       number: 0,
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
-      recaptcha: ""
     }
 
     console.log(USUARIO);
