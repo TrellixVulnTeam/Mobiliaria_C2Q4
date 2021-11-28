@@ -13,16 +13,9 @@ export class AccountsComponent implements OnInit {
 	constructor(private securityS: SecurityService, private cookie: CookieService, private toast: ToastrService) {}
 	accountList: UserI[] = [];
 	ngOnInit(): void {
-		this.getToken()
 		this.obtenerUsuarios();
 	}
 
-
-	getToken(){
-		let all = this.cookie.getAll()
-		console.log(all)
-		return this.cookie.get('ACCESS_TOKEN')
-	}
 
 	public obtenerUsuarios() {
 		this.securityS.getUser().subscribe(

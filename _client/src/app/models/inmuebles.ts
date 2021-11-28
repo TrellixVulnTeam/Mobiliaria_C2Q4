@@ -1,4 +1,5 @@
 export interface inmuebleI{
+    _id?:number,
     type: string,
     city: string,
     sector: string,
@@ -13,13 +14,10 @@ export interface inmuebleI{
         email: string,
     },
     favs: number,
-    comments: string,
-    date: string,
-    img:{
-        img1:string,
-        img2:string,
-        img3:string,
-        img4:string,
-    },
-    price:number
+    comments: string[],
+    description:string,
+    img:any,
+    price:number,
+    tags:string[],
+    active: boolean
 }

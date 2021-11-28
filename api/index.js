@@ -2,6 +2,8 @@ const express = require('express');
 const routerApi = require('./routes/index')
 const cors = require('cors');
 const morgan = require('morgan');
+const multer = require('multer')
+
 const path = require('path');
 
 //Inicialitations
@@ -20,7 +22,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
 //routes
-routerApi(app)
+routerApi(app, express, './src')
 
 //starting server
 app.listen(app.get('port'), ()=>console.log(`I am in http://localhost:${app.get('port')}`))

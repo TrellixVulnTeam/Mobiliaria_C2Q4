@@ -13,7 +13,7 @@
        <h2 class="Banda">{{encabezado}}</h2>
        <div class="Views">
          <div class="Inmueble" *ngFor="let i of inmuebles">
-           <div class="img" style="background: url('{{i.img.img1}}');background-position:center; background-size: cover"></div>
+           <div class="img" style="background: url('{{i.img[0]}}');background-position:center; background-size: cover"></div>
            <div class="desc">
              <h3>{{i.type}}</h3>
              <p>{{i.sector}}</p>

@@ -16,7 +16,6 @@ export class UserTokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let req = request;
     const token:string = this.cookieService.get("ACCESS_TOKEN")
-    console.log("este es", token)
     if(token){
       req=request.clone({
         setHeaders: {

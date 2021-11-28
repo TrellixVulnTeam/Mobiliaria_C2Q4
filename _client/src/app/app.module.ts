@@ -26,7 +26,9 @@ import { AboutComponent } from './components/about/about.component';
     AppRoutingModule, 
     BrowserAnimationsModule, 
     ToastrModule.forRoot(), 
-    HttpClientModule ],
+    HttpClientModule,
+	 
+],
 	providers: [
 		SecurityService,
 		UserService,

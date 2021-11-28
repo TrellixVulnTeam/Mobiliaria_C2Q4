@@ -45,7 +45,6 @@ export class SignupComponent implements OnInit {
       this._userService.signup(USUARIO).subscribe(data => {
       this.toastr.success('Usuario registrado', 'El Usuario se registro con éxito.')
       location.reload()
-      console.log(data)
     }, error =>{
       this.toastr.error('Process has been failed', 'Error Signup')
       console.log(error)

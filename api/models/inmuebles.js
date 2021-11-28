@@ -15,16 +15,14 @@ const inmuebleSchema = new Schema({
         name: String,
         email: String,
     },
-    favs: Number,
-    comments: String,
+    favs: {type: Number, default: 0},
+    comments: {type:Array, default: [""]},
     date: {type: Date, default:Date.now},
-    img:{
-        img1:String,
-        img2:String,
-        img3:String,
-        img4:String,
-    },
-    price:Number
+    img:[],
+    price:Number,
+    description: String,
+    tags:[],
+    active:{type: Boolean, deault: true}
     
 })
 

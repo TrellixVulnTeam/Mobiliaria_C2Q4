@@ -1,6 +1,6 @@
 <div class="Container">
     <aside class="P-panel">
-      <div class="P-img">
+      <div [class]="'P-img'" >
         <!-- <img src="../../../assets/Perfil.jpg" alt="perfil"> -->
       </div>
       <div class="P-info">
@@ -18,11 +18,11 @@
           {{"email: "}}
           <b>jhoanburbano@unicauca.edu.co</b>
         </p>
-        <button class="button">edit data</button>
+        <button class="button" ><a routerLink="'/profile/my-account'">edit data</a></button>
       </div>
-    <div class="P-publ" >
+    <div class="P-publ" *ngIf="rol==='ASESOR'">
       <h2 >Yours active publications</h2>
-      <div class="Publ">
+      <div class="Publ" *ngFor="let inmueble of context">
         <div class="txt">
           <h4>Apartamento</h4>
           <p>Valle de lili</p>
@@ -36,40 +36,6 @@
         </div>
         <img src="https://photos.encuentra24.com/t_or_fh_s/f_auto/v1/pa/18/45/33/70/18453370_6a9a27" alt="">
       </div>
-    
-    
-      <div class="Publ">
-        <div class="txt">
-          <h4>Casa Finca</h4>
-          <p>Kilometro 18</p>
-          <p>Dagua</p>
-          <div class="icons">
-            <p><i class="fas fa-layer-group"></i>3</p>
-            <p><i class="fas fa-door-closed"></i>3</p>
-            <p><i class="fas fa-bath"></i>2</p>
-            <p><i class="fas fa-car"></i>1</p>
-          </div>
-        </div>
-        <img src="https://img10.naventcdn.com/avisos/13/00/61/44/50/43/720x532/264078814.jpg" alt="">
-      </div>
-    
-    
-      <div class="Publ">
-        <div class="txt">
-          <h4>Casa</h4>
-          <p>Jardin Plaza</p>
-          <p>Cali</p>
-          <div class="icons">
-            <p><i class="fas fa-layer-group"></i>3</p>
-            <p><i class="fas fa-door-closed"></i>3</p>
-            <p><i class="fas fa-bath"></i>2</p>
-            <p><i class="fas fa-car"></i>1</p>
-          </div>
-        </div>
-        <img src="https://files.encuentra24.com/or_fh_l/cr/12/47/41/17/12474117_d7897d.jpg" alt="">
-      </div>
-    </div>
-    </aside>
     <div class="View">
     
     </div>
