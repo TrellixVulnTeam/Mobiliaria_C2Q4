@@ -13,13 +13,21 @@ import { CookieService } from 'ngx-cookie-service';
 import { SecurityService } from './services/security.service';
 import { UserService } from './services/user.service';
 import { AboutComponent } from './components/about/about.component';
+import { NavbarComponent } from './navbar/navbar/navbar.component';
+import { InmuebleComponent } from './components/inmueble/inmueble.component';
+import { RouterModule } from '@angular/router';
+import { SliderCarouselModule } from 'slider-carousel';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
 	declarations: [ 
     AppComponent, 
     HomeComponent, 
     NotFoundComponent, 
-	AboutComponent
+	AboutComponent,
+	NavbarComponent,
+ InmuebleComponent
    ],
 	imports: [ 
     BrowserModule, 
@@ -27,6 +35,9 @@ import { AboutComponent } from './components/about/about.component';
     BrowserAnimationsModule, 
     ToastrModule.forRoot(), 
     HttpClientModule,
+	RouterModule,
+	SliderCarouselModule,
+	ReactiveFormsModule
 	 
 ],
 	providers: [

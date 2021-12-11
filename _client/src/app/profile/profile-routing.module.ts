@@ -10,6 +10,7 @@ const routes: Routes = [
     children:[
       {path: 'board', component: ProfileComponent},
       {path: 'my-account', component: MyAccountComponent},
+      {path: 'edit-account/:id', component: MyAccountComponent},
       {path: 'logout', component: LogoutComponent},
       {path: '**', redirectTo: 'board', canActivate:[USerGuardGuard]},
     ], 

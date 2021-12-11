@@ -88,6 +88,21 @@
           &:hover {
             background: #231f48;
           }
+          &:disabled{
+            background: #444;
+          }
+        }
+
+        & re-captcha{
+          transform: scale(.8);
+          & div{
+            overflow: visible;
+
+          }
+          & * {
+            overflow: visible;
+
+          }
         }
       }
     }

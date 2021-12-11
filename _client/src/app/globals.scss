@@ -6,6 +6,7 @@ $b-shadow-t: .2rem .1rem .5rem #0003;
 //Degradados
 $deg-blue-d:linear-gradient(to right, #0f0c29, #302b63, #24243e);
 $deg-blue-t:linear-gradient(to top, #24243e, #1e1b3a, #24243e);
+$deg-brown: linear-gradient(to top, #433117, #ce9f58);
 $deg-gray: linear-gradient(to top, #c5c5c5, #eef2f3);
 $deg-gray-l:  linear-gradient(to right, #dbdbdb, #cfcfcf);  /* Chrome 10-25, Safari 5.1-6 */
 $deg-bluegray: linear-gradient(to top, #141e30, #243b55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -25,6 +26,9 @@ $font-gray: #333;
 $gris: #555;
 $black-t:#0008;
 $red:#222;
+$green-v: #292;
+$dollar: rgb(65, 89, 65);
+$black:#111;
 
 //Medidas
 $b-r: .5rem ;

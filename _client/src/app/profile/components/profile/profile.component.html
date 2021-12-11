@@ -1,43 +1,66 @@
 <div class="Container">
     <aside class="P-panel">
-      <div [class]="'P-img'" >
-        <!-- <img src="../../../assets/Perfil.jpg" alt="perfil"> -->
+      <div [class]="'P-img'" style="background: url('{{datos.profile}}'); background-size: cover; background-position: center;">
+        <img [src]="datos.profile" alt="perfil" (load)="changeImg($event)" [style]="classImg">
       </div>
       <div class="P-info">
         <p id='name'>
-          <b>Jhoan Sebastian Burbano</b>
+          <b>{{datos.name + ' ' + datos.lastname}}</b>
         </p>
         <p >
-          <b>Asesor</b>
+          <b>{{datos.rol}}</b>
         </p>
         <p >
           {{"Telefono: "}}
-          <b>3197841770</b>
+          <b>{{datos.number }}</b>
         </p>
         <p >
-          {{"email: "}}
-          <b>jhoanburbano@unicauca.edu.co</b>
+          {{"Email: "}}
+          <b>{{datos.email}}</b>
         </p>
-        <button class="button" ><a routerLink="'/profile/my-account'">edit data</a></button>
+        <button class="button" routerLink="/profile/editar-account" >edit data</button>
       </div>
     <div class="P-publ" *ngIf="rol==='ASESOR'">
       <h2 >Yours active publications</h2>
-      <div class="Publ" *ngFor="let inmueble of context">
+      <div class="Publ" *ngFor="let i of context">
         <div class="txt">
-          <h4>Apartamento</h4>
-          <p>Valle de lili</p>
-          <p>Cali</p>
+          <h4>{{i.type}}</h4>
+          <p>{{i.sector}}</p>
+          <p>{{i.city}}</p>
           <div class="icons">
-            <p><i class="fas fa-layer-group"></i>3</p>
-            <p><i class="fas fa-door-closed"></i>3</p>
-            <p><i class="fas fa-bath"></i>2</p>
-            <p><i class="fas fa-car"></i>1</p>
+            <p><i class="fas fa-layer-group"></i>{{i.attr.levels}}</p>
+            <p><i class="fas fa-door-closed"></i>{{i.attr.rooms}}</p>
+            <p><i class="fas fa-bath"></i>{{i.attr.baths}}</p>
+            <p><i class="fas fa-car"></i>{{i.attr.garage}}</p>
           </div>
         </div>
-        <img src="https://photos.encuentra24.com/t_or_fh_s/f_auto/v1/pa/18/45/33/70/18453370_6a9a27" alt="">
+        <div class="img" style="background: url('{{i.img[0]}}');">
+          <img [src]="i.img[0]" alt="">
+        </div>
       </div>
-    <div class="View">
-    
     </div>
+    <div class="P-publ" *ngIf="rol==='CLIENT'">
+      <h2 >Yours favorites</h2>
+      <div class="Publ" *ngFor="let i of context">
+        <div class="txt">
+          <h4>{{i.type}}</h4>
+          <p>{{i.sector}}</p>
+          <p>{{i.city}}</p>
+          <div class="icons">
+            <p><i class="fas fa-layer-group"></i>{{i.attr.levels}}</p>
+            <p><i class="fas fa-door-closed"></i>{{i.attr.rooms}}</p>
+            <p><i class="fas fa-bath"></i>{{i.attr.baths}}</p>
+            <p><i class="fas fa-car"></i>{{i.attr.garage}}</p>
+          </div>
+        </div>
+        <div class="img" style="background: url('{{i.img[0]}}');">
+          <img [src]="i.img[0]" alt="">
+        </div>
+      </div>
     </div>
+    </aside>
+    <div class="Views">
+      
+    </div>
+</div>
     

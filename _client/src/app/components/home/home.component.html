@@ -13,9 +13,18 @@
        <h2 class="Banda">{{encabezado}}</h2>
        <div class="Views">
          <div class="Inmueble" *ngFor="let i of inmuebles">
-           <div class="img" style="background: url('{{i.img[0]}}');background-position:center; background-size: cover"></div>
+           <div class="img" style="background: url('{{i.img[0]}}');background-position:center; background-size: cover">
+            <span *ngIf="rol==='CLIENT'">
+              <span><p>{{i.favs}}</p></span>
+              <i  (click)='addFavorite(i._id)' [class]="favoritos.includes(i._id)?'fas fa-heart':'far fa-heart'"></i>
+            </span>
+            <span *ngIf="rol!=='CLIENT'">
+              <span><p>{{i.favs}}</p></span>
+              <i  (click)='noLogin()' class="fas fa-heart"></i>
+            </span>
+          </div>
            <div class="desc">
-             <h3>{{i.type}}</h3>
+             <h3 (click)="viewInmueble(i._id)" >{{i.type}}</h3>
              <p>{{i.sector}}</p>
              <p><b>{{i.city}}</b></p>
              <div class="icons">
@@ -24,7 +33,7 @@
               <p><i class="fas fa-bath"></i>{{i.attr.baths}}</p>
               <p><i class="fas fa-car"></i>{{i.attr.garage}}</p>
              </div>
-             <p class="price">$ {{i.price}}</p>
+             <p class="price">{{i.price | currency:'COP':'symbol-narrow':'4.0-0'}}</p>
            </div>
          </div>
        </div>

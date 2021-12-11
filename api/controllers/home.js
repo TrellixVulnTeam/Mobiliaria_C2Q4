@@ -9,4 +9,18 @@ const getInm = async(req, res, next)=>{
     }
 }
 
-module.exports = getInm
+const getI = async (req, res, next)=>{
+    const {idInm} = req.params
+    try {
+       const inmueble = await Inm.findById(idInm)
+       console.log(inmueble)
+       res.json(inmueble)
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+module.exports = {
+    getInm,
+    getI
+}

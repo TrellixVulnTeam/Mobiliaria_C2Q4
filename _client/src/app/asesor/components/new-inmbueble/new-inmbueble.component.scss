@@ -214,7 +214,6 @@
 						width: 100%;
 					}
                     & p{
-                        position: absolute;
                         font-size: .6rem;
                         word-wrap: normal;
                         & b{
@@ -222,6 +221,7 @@
                             background: $green;
                             font-weight: bold;
 							cursor: pointer;
+							display: inline-block;
                         }
                     }
 				}

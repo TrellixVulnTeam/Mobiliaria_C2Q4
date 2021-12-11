@@ -29,8 +29,8 @@ export class ClientGuard implements CanActivate, CanActivateChild, CanDeactivate
 		const rol = this.cookies.get('ROL');
 		if (token && rol) {
 			switch (rol) {
-				case 'CLIENTE':
-          return true;
+				case 'CLIENT':
+					return true;
 				case 'ADMIN':
 					this.toast.error(`you can't authorization`, 'ACCESS DENEGATED');
 					this.router.navigate([ '/' ]);
@@ -50,8 +50,8 @@ export class ClientGuard implements CanActivate, CanActivateChild, CanDeactivate
 					break;
 			}
 		}
-    this.toast.error('you are not authenticated', 'Error');
-    this.router.navigate([ '/auth/', 'login' ]);
+		this.toast.error('you are not authenticated', 'Error');
+		this.router.navigate([ '/auth/', 'login' ]);
 		return false;
 	}
 	canActivateChild(

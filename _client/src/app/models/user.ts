@@ -25,6 +25,8 @@ export interface JwtResponseI {
 }
 
 export interface UserI {
+	img?:string | null,
+	description?:string | null,
 	name: string;
 	lastname: string;
 	rol:string;

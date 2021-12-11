@@ -6,6 +6,8 @@ import { InmueblesComponent } from './components/inmuebles/inmuebles.component';
 import { NewInmbuebleComponent } from './components/new-inmbueble/new-inmbueble.component';
 import { AsesorService } from '../services/asesor.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AsesorRoutingModule,
     ReactiveFormsModule,
 
-  ], providers:[AsesorService]
+  ], providers:[AsesorService, CookieService, ToastrService]
 })
 export class AsesorModule { }
+ 

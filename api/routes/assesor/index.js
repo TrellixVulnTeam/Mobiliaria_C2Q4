@@ -10,13 +10,15 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage})
-const {isAssesor} = require('../../middlewars/index')
-const { createInm, getOwnInm, deleteInm, postImg} = require('../../controllers/inmuebles')
+const {isAssesor, isClient} = require('../../middlewars/index')
+const { createInm, getOwnInm, deleteInm, postImg, addComment, getComments} = require('../../controllers/inmuebles')
 
 
 assesor.get('/', getOwnInm)
 assesor.post('/uploads', isAssesor, upload.array('files', 6),postImg)
 assesor.post('/create', createInm);
 assesor.delete('/delete/:idInm', deleteInm)
+assesor.get('/comments', getComments)
+assesor.patch('/comments', isClient, addComment)
 
 module.exports = assesor

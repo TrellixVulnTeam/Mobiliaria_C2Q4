@@ -17,10 +17,25 @@ const isAssesor = (req, res, next)=>{
 
 
 const isAuth = (req, res, next)=>{
-    const token = req.headrs.auth
+    const token = req.headers.auth
     try {
         let decoded = jwt.verify(token, SECRET_KEY)
         if (decoded){
+            next()
+        }
+        else{
+            return
+        }
+    } catch (error) {
+        res.send([])
+    }
+}
+
+const isClient = (req, res, next)=>{
+    const token = req.headers.auth
+    try {
+        let decoded = jwt.verify(token, SECRET_KEY)
+        if (decoded.rol === 'CLIENT'){
             next()
         }
         else{
@@ -33,5 +48,6 @@ const isAuth = (req, res, next)=>{
 
 module.exports ={
     isAssesor,
-    isAuth
+    isAuth,
+    isClient,
 }

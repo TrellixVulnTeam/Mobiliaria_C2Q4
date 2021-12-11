@@ -16,7 +16,7 @@ const inmuebleSchema = new Schema({
         email: String,
     },
     favs: {type: Number, default: 0},
-    comments: {type:Array, default: [""]},
+    comments: {type:Array, default: []},
     date: {type: Date, default:Date.now},
     img:[],
     price:Number,

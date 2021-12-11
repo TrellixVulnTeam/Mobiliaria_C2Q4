@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { InmuebleComponent } from './components/inmueble/inmueble.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { LoginComponent } from './components/login/login.component';
 // import { ProfileComponent } from './components/profile/profile.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   {path: 'security', loadChildren: () => import('./security/security.module').then(m => m.SecurityModule) },
   {path: '', component: HomeComponent},
+  {path: 'inmueble/:idInm', component: InmuebleComponent},
   {path: 'about', component: AboutComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo:'404', pathMatch: 'full'}

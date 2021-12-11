@@ -18,8 +18,8 @@ export class UserService {
         if(res){
           //guardar
         this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn)
-        this.cookieService.set('USER', res.dataUser.name)
-        this.cookieService.set('ROL', res.dataUser.rol)
+        this.cookieService.set('USER', res.dataUser.name, parseInt(res.dataUser.expiresIn), '/', 'localhost',false,  "None")
+        this.cookieService.set('ROL', res.dataUser.rol, parseInt(res.dataUser.expiresIn), '/', 'localhost',false,  "None")
         }
       }
     ))
@@ -55,6 +55,8 @@ export class UserService {
     }
     return this.token
   }
+
+
 
 
 }

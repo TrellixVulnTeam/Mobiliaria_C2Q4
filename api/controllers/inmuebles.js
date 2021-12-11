@@ -1,5 +1,7 @@
 const Inm = require('../models/inmuebles');
+const User = require('../models/user')
 const jwt = require('jsonwebtoken');
+const crypto = require("crypto");
 const SECRET_KEY = 'HelloPeter17122021';
 
 const postImg = (req, res, next)=>{
@@ -77,9 +79,47 @@ const deleteInm=async(req, res, next)=>{
     }
 }
 
+const addComment = async (req, res, next) =>{
+    const {idInm, comment} = req.body
+    const {auth} = req.headers
+    console.log(idInm, comment)
+    try {
+        const decoded = jwt.verify(auth, SECRET_KEY)
+        const user = await User.findById(decoded.id)
+        const idComment = `${Date.now()}_${crypto.randomBytes(16).toString('hex')}`
+        const comentario = {
+            id: idComment,
+            user: `${user.name} ${user.lastname}`,
+            uderId: user._id,
+            content: comment.content,
+        }
+        const inmueble = await Inm.findById(idInm)
+        inmueble.comments.push(comentario)
+        await inmueble.save()
+        console.log(comentario)
+        res.send({message: 'comentario agregado con éxito'})
+    } catch (error) {
+        res.send(error)
+    }
+}
+
+const getComments = async(req, res, next)=>{
+    const {idInm} = req.query
+    try {
+        const inmueble = await Inm.findById(idInm)
+        res.json(inmueble.comments)
+    } catch (error) {
+        res.send(error)
+    }
+}
+
+
 module.exports = {
     postImg,
     createInm,
     getOwnInm,
     deleteInm,
+
+    addComment,
+    getComments
 }

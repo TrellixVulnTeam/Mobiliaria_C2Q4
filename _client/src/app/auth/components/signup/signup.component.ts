@@ -12,7 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-
+  isValid:boolean=false
+  SITE_KEY:string='6Le1n0cdAAAAADIbgkv_eIFWhJK0M06pxzOFPiGh'
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -23,33 +24,48 @@ export class SignupComponent implements OnInit {
       name: ['', Validators.required],
       lastname: ['', Validators.required],
       rol: ['', Validators.required],
-      number: ['', Validators.required, Validators.email],
-      email: ['', Validators.required],
-      password: ['', Validators.required, Validators.pattern('(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$')],
+      number: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{3}-?[0-9]{6,7}$/)]],
+      email: ['',[ Validators.required,
+      Validators.email]
+    ],
+      password: ['',[ 
+        Validators.required ,
+        Validators.pattern(/^(?=.*\d)(?=.*[!@#$.%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/)
+      ]],
+      captcha: [null, Validators.required]
     })
   }
 
   ngOnInit(): void {
   }
 
+  tryIsValid(){
+    alert(this.signupForm.valid)
+  }
+
   signUp(){
-    const USUARIO: UserI ={
-      name: this.signupForm.get('name')?.value,
-      lastname: this.signupForm.get('lastname')?.value,
-      rol: this.signupForm.get('rol')?.value,
-      number: this.signupForm.get('number')?.value,
-      email: this.signupForm.get('email')?.value,
-      password: this.signupForm.get('password')?.value,
+    if(this.signupForm.valid){
+      this.isValid=true;
+      const USUARIO: UserI ={
+        name: this.signupForm.get('name')?.value,
+        lastname: this.signupForm.get('lastname')?.value,
+        rol: this.signupForm.get('rol')?.value,
+        number: this.signupForm.get('number')?.value,
+        email: this.signupForm.get('email')?.value,
+        password: this.signupForm.get('password')?.value,
+      }
+      console.log(USUARIO);
+        this._userService.signup(USUARIO).subscribe(data => {
+        this.toastr.success('Usuario registrado', 'El Usuario se registro con éxito.')
+        location.reload()
+      }, error =>{
+        this.toastr.error(error.message, error.name)
+        console.log(error)
+        this.router.navigate(['/auth/signup'])
+      })
+    }else{
+
     }
-    console.log(USUARIO);
-      this._userService.signup(USUARIO).subscribe(data => {
-      this.toastr.success('Usuario registrado', 'El Usuario se registro con éxito.')
-      location.reload()
-    }, error =>{
-      this.toastr.error('Process has been failed', 'Error Signup')
-      console.log(error)
-      this.router.navigate(['/auth/signup'])
-    })
   }
 
 

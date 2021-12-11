@@ -12,6 +12,7 @@ const routes: Routes = [
         path: '',
         children: [
             {path: 'login', component: LoginComponent},
+            {path: 'login/:token', component: LoginComponent},
             {path: 'signup', component: SignupComponent},
             {path: '**', redirectTo: 'login'}
         ],

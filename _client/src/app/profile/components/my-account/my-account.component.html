@@ -1,1 +1,77 @@
-<p>my-account works!</p>
+<div class="Container">
+    <div class="Chart">
+        <h2>Tu Perfil</h2>
+        <form [formGroup]="editUserForm">
+            <div class="Field Img">
+                <div class="img" >
+                    <span  [style]="!isEdit?'color: transparent':nProfile?'color:transparent':''"><input *ngIf="isEdit && !nProfile" type="file" accept=".jpg, .png, .jpeg" (change)="captarProfile($event)" ></span>
+                    <img (click)="noImage()" [src]="nProfile || datos.profile" [style]="classImg" (load)="changeImg($event)"
+                        alt="">
+                </div>
+            </div>
+            <div class="Field Name">
+                <label for="">
+                    <p>
+                        Nombre
+                    </p>
+                    <input type="text" [readonly]="!isEdit" formControlName="name">
+                </label>
+            </div>
+            <div class="Field LastName">
+                <label for="">
+                    <p>
+                        Apellido
+                    </p>
+                    <input type="text" [readonly]="!isEdit" formControlName="lastname">
+                </label>
+            </div>
+            <div class="Field Description">
+                <label for="">
+                    <p>
+                        Acerca de ti
+                    </p>
+                    <textarea name="" id="" [readonly]="!isEdit" formControlName="desc"></textarea>
+                </label>
+            </div>
+            <div class="Field Rol">
+                <label for="">
+                    <p>
+                        Rol: 
+                    </p>
+                    <input type="text" readonly formControlName="rol">
+                </label>
+            </div>
+            <div class="Field Number">
+                <label for="">
+                    <p>
+                        Number: 
+                    </p>
+                    <input type="text" [readonly]="!isEdit" formControlName="number">
+                </label>
+            </div>
+            <div class="Field Email">
+                <label for="">
+                    <p>
+                        Email
+                    </p>
+                    <input type="email" readonly formControlName="email">
+                </label>
+            </div>
+            <div class="Field Password">
+                <label for="">
+                    <p>
+                        Password
+                    </p>
+                    <input type="password" [readonly]="!isEdit" formControlName="password">
+                </label>
+            </div>
+            <div class="Field Submit">
+                <div class="Buttons">
+                    <button (click)="$event.preventDefault()" [routerLink]="['/profile/']" routerLinkActive="router-link-active" >Regresar</button>
+                    <button (click)="touchEditar($event)">Editar</button>
+                    <button (click)="actualizarPerfil($event)" [disabled]="!isEdit || !editUserForm.valid">{{editUserForm.valid?"Guardar Cambios": "Completa los cambios"}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

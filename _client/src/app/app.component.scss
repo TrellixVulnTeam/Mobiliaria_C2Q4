@@ -1,3 +1,5 @@
+@import './globals.scss';
+
 nav{
     z-index: 1;
     position: sticky;
@@ -40,6 +42,16 @@ nav{
         color: black;
       }
     }
+    & .logout{
+      border:none;
+      font-size: 1.5rem;
+      color: #666;
+      cursor: pointer;
+      &:hover{
+        // font-weight: bold;
+        color:black;
+      }
+    }
   }
   
   footer{
@@ -52,6 +64,5 @@ nav{
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 1.5rem #0002;
-  
   }
   

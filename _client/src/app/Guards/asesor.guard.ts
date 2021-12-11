@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import {
+	ActivatedRouteSnapshot,
+	CanActivate,
+	CanActivateChild,
+	CanDeactivate,
+	CanLoad,
+	Route,
+	Router,
+	RouterStateSnapshot,
+	UrlSegment,
+	UrlTree
+} from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AsesorGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
 	constructor(private cookies: CookieService, private router: Router, private toast: ToastrService) {}
@@ -19,7 +30,7 @@ export class AsesorGuard implements CanActivate, CanActivateChild, CanDeactivate
 		if (token && rol) {
 			switch (rol) {
 				case 'ASESOR':
-          return true;
+					return true;
 				case 'ADMIN':
 					this.toast.error(`you can't authorization`, 'ACCESS DENEGATED');
 					this.router.navigate([ '/' ]);
@@ -41,23 +52,26 @@ export class AsesorGuard implements CanActivate, CanActivateChild, CanDeactivate
 		}
 		this.toast.error('you are not authenticated', 'Error');
 		this.router.navigate([ '/auth/', 'login' ]);
-			return false;
-  }
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
+		return false;
+	}
+	canActivateChild(
+		childRoute: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot
+	): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+		return true;
+	}
+	canDeactivate(
+		component: unknown,
+		currentRoute: ActivatedRouteSnapshot,
+		currentState: RouterStateSnapshot,
+		nextState?: RouterStateSnapshot
+	): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+		return true;
+	}
+	canLoad(
+		route: Route,
+		segments: UrlSegment[]
+	): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+		return true;
+	}
 }
